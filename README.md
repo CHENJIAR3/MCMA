@@ -4,6 +4,6 @@ If possible, please cite "Multi-Channel Masked Autoencoder and Comprehensive Eva
 
 It includes demo.py, the trained model, and sample data.
 
-You can reproduce it:conda env create -f environment.yml
+The environment is provided: *conda env create -f environment.yml*
 
-Contacting me at chenjr356@gmail.com
+**Contacting me at chenjr356@gmail.com**
