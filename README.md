@@ -39,7 +39,8 @@ url={https://openreview.net/forum?id=lIX6BKDPJW}
 It includes demo.py, the trained model, and sample data.
 
 ### Environment
-The environment is provided: *conda env create -f environment.yml*
-
+```
+conda env create -f environment.yml*
+```
 ### Acknowledgements
 **Contacting me at chenjr356@gmail.com**
