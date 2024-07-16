@@ -40,7 +40,7 @@ It includes demo.py, the trained model, and sample data.
 
 ### Environment
 ```
-conda env create -f environment.yml*
+conda env create -f environment.yml
 ```
 ### Acknowledgements
 **Contacting me at chenjr356@gmail.com**
