@@ -26,7 +26,7 @@ It is the open-source code for MCMA, which could reconstruct 12-lead ECG with ar
 
 ### Citation
 If you find it is useful, please cite **Multi-Channel Masked Autoencoder and Comprehensive Evaluations for Reconstructing 12-Lead ECG from Arbitrary Single-Lead ECG**
-
+```
 @inproceedings{
 chen2024multichannel,
 title={Multi-Channel Masked Autoencoder and Comprehensive Evaluations for Reconstructing 12-Lead {ECG} from Arbitrary Single-Lead {ECG}},
@@ -35,7 +35,7 @@ booktitle={Artificial Intelligence and Data Science for Healthcare: Bridging Dat
 year={2024},
 url={https://openreview.net/forum?id=lIX6BKDPJW}
 }
-
+```
 ### Files 
 It includes demo.py, the trained model, and sample data.
 
