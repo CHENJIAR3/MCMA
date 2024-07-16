@@ -6,12 +6,11 @@ Multi-Channel Masked Autoencoder and Comprehensive Evaluations for Reconstructin
 <h3 align="center">
 Accepted by KDD workshop-AIDSH 224</h3>
 <h3 align="center">
-&nbsp;
-Jiarong Chen&nbsp;
+First author: Jiarong Chen&nbsp;
 </h3>
 
 ### Updates
-- [x] Paper (Waiting for accepted by a journal)
+- [x] Paper (Waiting for accepted by a journal, which included detailed information)
 - [x] The application algorithm
 - [x] Pretrained weights 
 - [x] The samples for testing
