@@ -35,6 +35,18 @@ year={2024},
 url={https://openreview.net/forum?id=lIX6BKDPJW}
 }
 ```
+or 
+```
+@misc{chen2024multichannelmaskedautoencodercomprehensive,
+      title={Multi-Channel Masked Autoencoder and Comprehensive Evaluations for Reconstructing 12-Lead ECG from Arbitrary Single-Lead ECG}, 
+      author={Jiarong Chen and Wanqing Wu and Tong Liu and Shenda Hong},
+      year={2024},
+      eprint={2407.11481},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2407.11481}, 
+}
+```
 ### Files 
 It includes demo.py, the trained model, and sample data.
 
