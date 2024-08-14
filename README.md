@@ -18,7 +18,9 @@ First author: Jiarong Chen&nbsp;
 ### Contributions
 - [x] Reconstructing 12-Lead ECG from Arbitrary Single-Lead ECG
 - [x] Comprehensive Evaluations, including signal-level, feature-level, and diagnostic-level
-
+### Saved models
+- [x] The model in MCMA could be senn in the Generator file
+- [x] All the trained models: https://drive.google.com/drive/folders/1m57dz-FhcQCGNoZ2wxA_sUoHgrrGRHIn?usp=sharing
 #### ** You could follow this repo for the newest information. **
 
 It is the open-source code for MCMA, which could reconstruct 12-lead ECG with arbitrary single-lead ECG. 
