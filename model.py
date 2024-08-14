@@ -3,30 +3,6 @@ import tensorflow_addons as tfa
 from utils import args
 from models import InstanceNormalization_ecg12
 
-class RMSNorm(tf.keras.layers.Layer):
-    def __init__(self, epsilon=1e-6):
-        super(RMSNorm, self).__init__()
-        self.epsilon = epsilon
-
-    def build(self, input_shape):
-        self.alpha = self.add_weight(
-            shape=(input_shape[-1],),
-            initializer="ones",
-            trainable=True,
-            name="alpha"
-        )
-
-        self.beta = self.add_weight(
-            shape=(input_shape[-1],),
-            initializer="zeros",
-            trainable=True,
-            name="betas"
-        )
-    def call(self, inputs):
-        # norm = tf.norm(inputs, axis=-1, keepdims=True)
-        denominator = tf.sqrt(tf.reduce_mean(tf.square(inputs), axis=1, keepdims=True) + self.epsilon)
-        x_norm = self.alpha*inputs / (denominator)+self.beta
-        return x_norm
 def downblock(x0, filters, kernel_size=13,strides=1,padding='same'):
     x1 = tf.keras.layers.Conv1D(filters=filters,
                                 kernel_size=kernel_size,
@@ -105,7 +81,6 @@ def unet3plus_block(e0,output_channels=12,pool_size=1,filters =[32,64,128,256,51
     return d0
 
 
-# Denoiser设置为filters = [32,64,128,256,512],    time_embed = TimeEmbedding(512)(time_layer)
 def modelx(input_size=(1024, 12), output_channels=12, pool_size = 2,kernel_size=13):
     """ UNet3+ base model """
     filters = [16,32,64,128,256,512]
@@ -114,45 +89,6 @@ def modelx(input_size=(1024, 12), output_channels=12, pool_size = 2,kernel_size=
     x = input_layer
     output = unet3plus_block(x,output_channels,pool_size,filters,kernel_size=kernel_size)
     return tf.keras.Model(inputs=[input_layer], outputs=[output], name='Backbone')
-def Disc_model(input_size=(1024, 12), output_channels=12,cycles=14):
-    """ UNet3+ base model """
-    myinput= tf.keras.layers.Input(
-        shape=input_size,name="input_layer")
-    x1 = tf.keras.layers.Conv1D(filters=output_channels,
-                                kernel_size=3,
-                                strides=1,
-                                activation='gelu',
-                                padding='same')(myinput)
-    for i in range(cycles):
-        x1=tfa.layers.InstanceNormalization()(x1)
-        x1 = tf.keras.layers.Conv1D(filters=output_channels,
-                                    kernel_size=3,
-                                    strides=1,
-                                    activation='gelu',
-                                    padding='same')(x1)
-    myoutput=x1
-    return tf.keras.Model(inputs=[myinput], outputs=[myoutput])
-class PositionalEmbedding(tf.keras.layers.Layer):
-    def __init__(self, Signal_Len, dim, initializer='glorot_uniform', **kwargs):
-        super(PositionalEmbedding, self).__init__(**kwargs)
-        self.Signal_Len = Signal_Len
-        self.dim = dim
-        self.position_embedding = tf.keras.layers.Embedding(
-            input_dim=self.Signal_Len, output_dim=self.dim,
-            embeddings_initializer=initializer,
-        )
-    def call(self, patches):
-        positions = tf.range(start=0, limit=self.Signal_Len, delta=1,dtype=tf.float32)
-        return patches + self.position_embedding(positions)
-def SimpleANN(input_size=24):
-    x0 = tf.keras.layers.Input(
-        shape=input_size,
-        name="input_layer"
-    )
-    x1 = tf.keras.layers.Dense(12,'sigmoid')(x0)
-    x1 = x1 + tf.keras.layers.Dense(12,'sigmoid')(x1)
-    x2 = x0+tf.keras.layers.Dense(24,'sigmoid')(x1)
-    return tf.keras.Model(inputs=[x0], outputs=[x2], name='SimpleANN')
 
 
 if __name__=='__main__':
