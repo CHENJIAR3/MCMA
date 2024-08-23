@@ -188,91 +188,45 @@ def write2excel_hr2(rhr,fhr,maehr,excel_path):
         df3.to_excel(writer, sheet_name='MAE_HR', index=True)
 
 if __name__=='__main__':
-    if args.data_norm:
-        # trainpath = "/data/0shared/chenjiarong/lead_dataset/trainset_lead"
-        testpath = "/data/0shared/chenjiarong/lead_dataset/testset_lead_Long"
-        # valpath = "/data/0shared/chenjiarong/lead_dataset/valset_lead"
-    else:
-        # trainpath = "/data/0shared/chenjiarong/lead_dataset/trainset2_lead"
-        testpath = "/data/0shared/chenjiarong/lead_dataset/testset2_lead_Long"
-        # valpath = "/data/0shared/chenjiarong/lead_dataset/valset2_lead"
-    args.testmodel=1
-    #
-    #
     testds = read_tfrecords_Long(testpath).batch(args.bs).prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
     resultpath = '../results/ptbxl/'
-    # for mode in ['ae','unet','ekgan','megan','cgan']:
-    #     args.testmodel=mode
-    # if args.testmodel=='ae':
-    if args.testmodel==1:
-    # for [anylead,padding] in [[1,'zeros']]:
-        # modelpath='../abliation_study/Autoencoder_zeros_'+str(anylead)
-        modelpath = "../abliation_study/Autoencoder_ks5"
-        model = tf.keras.models.load_model(modelpath)
-        maehr,rhr, fhr=test_ae_hr(model=model,ds=testds)
-        excel_path=resultpath+'_hr_0814.xlsx'
-        if not os.path.exists(resultpath):
-            os.mkdir(resultpath)
-        write2excel_hr2(rhr, fhr, maehr,excel_path)
-    else:
-        modelpath='../MAUNet'
-        model1 = tf.keras.models.load_model(modelpath)
-        maehru, rhru, fhru = test_unet_hr(model=model1, ds=testds, numlead=2)
-        # excel_path = resultpath + 'MAUNet_hr.xlsx'
-        # if args.testmodel=='ekgan':
-        modelpath='../EKGAN/inference_generator'
-        model1 = tf.keras.models.load_model(modelpath)
-        maehre,rhre, fhre=test_ekgan_hr(model=model1,ds=testds)
-            # excel_path = resultpath + 'EKGAN_hr.xlsx'
-        # if args.testmodel=='megan':
-        modelpath = '../MEGAN/generator'
-        model1 = tf.keras.models.load_model(modelpath)
-        maehrm,rhrm,fhrm = test_unet_hr(model=model1, ds=testds)
-            # excel_path = resultpath + 'MEGAN_hr.xlsx'
-        # if args.testmodel=='cgan':
-        modelpath = '../CGAN/generator'
-        model1 = tf.keras.models.load_model(modelpath)
-        maehrc,rhrc,fhrc= test_unet_hr(model=model1, ds=testds)
-            # excel_path = resultpath + 'CGAN_hr_0409.xlsx'
+    # loading the trained model in MCMA
+    model = tf.keras.models.load_model(modelpath)
+    maehr,rhr, fhr=test_ae_hr(model=model,ds=testds)
+    # 12 groups
+    write2excel_hr2(rhr, fhr, maehr,excel_path)
+    
+    # loading other models, for comparison
+    # if args.testmodel=='maunet':
+    modelpath='../MAUNet'
+    model1 = tf.keras.models.load_model(modelpath)
+    maehru, rhru, fhru = test_unet_hr(model=model1, ds=testds, numlead=2)
+    # excel_path = resultpath + 'MAUNet_hr.xlsx'
+    modelpath='../EKGAN/inference_generator'
+    model1 = tf.keras.models.load_model(modelpath)
+    maehre,rhre, fhre=test_ekgan_hr(model=model1,ds=testds)
+    # if args.testmodel=='megan':
+    modelpath = '../MEGAN/generator'
+    model1 = tf.keras.models.load_model(modelpath)
+    maehrm,rhrm,fhrm = test_unet_hr(model=model1, ds=testds)
+    # if args.testmodel=='cgan':
+    modelpath = '../CGAN/generator'
+    model1 = tf.keras.models.load_model(modelpath)
+    maehrc,rhrc,fhrc= test_unet_hr(model=model1, ds=testds)
+        # excel_path = resultpath + 'CGAN_hr_0409.xlsx'
 
-        excel_path=resultpath+"compared_hr_0409.xlsx"
-        if not os.path.exists(resultpath):
-            os.mkdir(resultpath)
-        maehr=np.concatenate([maehru[:,None],maehre[:,None],maehrm[:,None],maehrc[:,None]],axis=1)
-        rhr = np.concatenate([rhru,rhre,rhrm,rhrc],axis=1)
-        fhr = np.concatenate([fhru,fhre,fhrm,fhrc],axis=1)
+    excel_path=resultpath+"compared_hr_0409.xlsx"
+    if not os.path.exists(resultpath):
+        os.mkdir(resultpath)
+    maehr=np.concatenate([maehru[:,None],maehre[:,None],maehrm[:,None],maehrc[:,None]],axis=1)
+    rhr = np.concatenate([rhru,rhre,rhrm,rhrc],axis=1)
+    fhr = np.concatenate([fhru,fhre,fhrm,fhrc],axis=1)
 
-        df1 = pd.DataFrame(rhr,columns=['MAUNET','EKGAN','MEGAN','CGAN'],index=["SD","CV","Range"]).round(4)
-        df2 = pd.DataFrame(fhr,columns=['MAUNET','EKGAN','MEGAN','CGAN'],index=["SD","CV","Range"]).round(4)
-        df3 = pd.DataFrame(maehr,columns=['MAUNET','EKGAN','MEGAN','CGAN']).round(4)
-        with pd.ExcelWriter(excel_path, engine='xlsxwriter') as writer:
-            df1.to_excel(writer, sheet_name='real_heartrate', index=True)
-            df2.to_excel(writer, sheet_name='fake_heartrate', index=True)
-            df3.to_excel(writer, sheet_name='MAE_HR', index=True)
-            # if args.testmodel=='unet':
-            #     # resultpath='./results/MAUNet_result_hr/'
-            #     modelpath='./MAUNet'
-            #     model1 = tf.keras.models.load_model(modelpath)
-            #     maehr,rhr,fhr=test_unet_hr(model=model1,ds=testds,numlead=2)
-            #     excel_path = resultpath + 'MAUNet_hr_0409.xlsx'
-            # if args.testmodel=='ekgan':
-            #     # resultpath='./results/EKGAN_result_hr/'
-            #     modelpath='./EKGAN/inference_generator'
-            #     model1 = tf.keras.models.load_model(modelpath)
-            #     maehr,rhr, fhr=test_ekgan_hr(model=model1,ds=testds)
-            #     excel_path = resultpath + 'EKGAN_hr_0409.xlsx'
-            # if args.testmodel=='megan':
-            #     # resultpath='./results/MEGAN_result_hr/'
-            #     modelpath = './MEGAN/generator'
-            #     model1 = tf.keras.models.load_model(modelpath)
-            #     maehr,rhr,fhr = test_unet_hr(model=model1, ds=testds)
-            #     excel_path = resultpath + 'MEGAN_hr_0409.xlsx'
-            # if args.testmodel=='cgan':
-            #     # resultpath='./results/CGAN_result_hr/'
-            #     modelpath = './CGAN/generator'
-            #     model1 = tf.keras.models.load_model(modelpath)
-            #     maehr,rhr,fhr = test_unet_hr(model=model1, ds=testds)
-            #     excel_path = resultpath + 'CGAN_hr_0409.xlsx'
-            # if not os.path.exists(resultpath):
-            #     os.mkdir(resultpath)
-            # write2excel_hr2(rhr,fhr,maehr, excel_path)
+    df1 = pd.DataFrame(rhr,columns=['MAUNET','EKGAN','MEGAN','CGAN'],index=["MHR_SD","MHR_CV","MHR_Range"]).round(4)
+    df2 = pd.DataFrame(fhr,columns=['MAUNET','EKGAN','MEGAN','CGAN'],index=["MHR_SD","MHR_CV","MHR_Range"]).round(4)
+    df3 = pd.DataFrame(maehr,columns=['MAUNET','EKGAN','MEGAN','CGAN']).round(4)
+    with pd.ExcelWriter(excel_path, engine='xlsxwriter') as writer:
+        df1.to_excel(writer, sheet_name='real_heartrate', index=True)
+        df2.to_excel(writer, sheet_name='fake_heartrate', index=True)
+        df3.to_excel(writer, sheet_name='MAE_HR', index=True)
+
