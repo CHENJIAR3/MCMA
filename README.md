@@ -10,8 +10,10 @@ First author: Jiarong Chen&nbsp;
 </h3>
 
 ### Updates
-- [x] Paper (Waiting for accepted by a journal, which included detailed information)
+- [x] Paper (Waiting for its publication, which included detailed information)
 - [x] The application algorithm
+- [x] The training algorithm
+- [x] The testing algorithm
 - [x] Pretrained weights 
 - [x] The samples for testing
 
