@@ -59,4 +59,4 @@ It includes demo.py, the trained model, and sample data.
 conda env create -f environment.yml
 ```
 ### Acknowledgements
-**Contacting me at chenjr356@gmail.com**
+**Contacting me at chenjr356@gmail.com, chenjr56@mail2.sysu.edu.cn, jiarong.chen@sjtu.edu.cn**
