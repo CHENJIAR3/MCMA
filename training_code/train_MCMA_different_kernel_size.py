@@ -11,16 +11,9 @@ from utils_MCMA import Trainer,args,read_tfrecords
 from testmodel.testecg_model import test_ae,write2excel
 if __name__ == "__main__":
     training = 0
+    # different kernel_size, you need to download from this url:https://drive.google.com/drive/folders/1m57dz-FhcQCGNoZ2wxA_sUoHgrrGRHIn?usp=sharing
     kernel_size = 5
-    if args.data_norm:
-        trainpath = "/data/0shared/chenjiarong/lead_dataset/trainset_lead"
-        testpath = "/data/0shared/chenjiarong/lead_dataset/testset_lead"
-        valpath = "/data/0shared/chenjiarong/lead_dataset/valset_lead"
-    else:
-        trainpath = "/data/0shared/chenjiarong/lead_dataset/trainset2_lead"
-        testpath = "/data/0shared/chenjiarong/lead_dataset/testset2_lead"
-        valpath = "/data/0shared/chenjiarong/lead_dataset/valset2_lead"
-
+    # 
     trainds = read_tfrecords(trainpath).prefetch(
         buffer_size=tf.data.experimental.AUTOTUNE).batch(args.bs).shuffle(1000)
     valds = read_tfrecords(valpath).batch(args.bs).prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
