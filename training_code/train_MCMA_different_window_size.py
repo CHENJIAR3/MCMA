@@ -16,15 +16,7 @@ from utils import args,read_tfrecords
 from utils_MCMA import Trainer
 from testmodel.testecg_model import *
 if __name__ == "__main__":
-    if args.data_norm:
-        trainpath = "/data/0shared/chenjiarong/lead_dataset/trainset_lead"
-        testpath = "/data/0shared/chenjiarong/lead_dataset/testset_lead"
-        valpath = "/data/0shared/chenjiarong/lead_dataset/valset_lead"
-    else:
-        trainpath = "/data/0shared/chenjiarong/lead_dataset/trainset2_lead"
-        testpath = "/data/0shared/chenjiarong/lead_dataset/testset2_lead"
-        valpath = "/data/0shared/chenjiarong/lead_dataset/valset2_lead"
-    testpath2 = '/data/0shared/chenjiarong/lead_dataset/cpsc2018'
+    # your trainpath/valpath/testpath
 
     trainds = read_tfrecords(trainpath).prefetch(
         buffer_size=tf.data.experimental.AUTOTUNE).batch(args.bs).shuffle(1000)
@@ -47,9 +39,10 @@ if __name__ == "__main__":
             modelpath ="Autoencoder_ks5"
         # args.anylead = 1
         # args.padding='zeros'
-        # trainer_ae = Trainer(epochs=args.epochs, lr=args.lr, ecglen=args.ecglen,modelpath=modelpath,kernel_size=5,pool_size=window_size,step_total=step_total)
-        # # with strategy.scope():
-        # trainer_ae.train(trainds, valds)
+            if training:
+            trainer_ae = Trainer(epochs=args.epochs, lr=args.lr, ecglen=args.ecglen,modelpath=modelpath,kernel_size=5,pool_size=window_size,step_total=step_total)
+            # # with strategy.scope():
+            trainer_ae.train(trainds, valds)
 
         model = tf.keras.models.load_model(modelpath)
         from keras_flops import get_flops
@@ -61,9 +54,6 @@ if __name__ == "__main__":
         df.to_pickle("model_size_diff_ws.pkl")
         data = pd.read_pickle("model_size_diff_ws.pkl")
         # #
-        # MAE_test, MSE_test, CC_test = test_ae(model=model, ds=testds, output_num=1)
-        # excel_path = resultpath +  "Autoencoder_ws"+str(window_size)+ '.xlsx'
-        # write2excel(MAE_test, MSE_test, CC_test, excel_path)
-        # MAE_test, MSE_test, CC_test = test_ae(model=model, ds=testds2, output_num=1)
-        # excel_path = resultpath2 +  "Autoencoder_ws"+str(window_size)+ '.xlsx'
-        # write2excel(MAE_test, MSE_test, CC_test, excel_path)
+        MAE_test, MSE_test, CC_test = test_ae(model=model, ds=testds, output_num=1)
+        excel_path = resultpath +  "Autoencoder_ws"+str(window_size)+ '.xlsx'
+        write2excel(MAE_test, MSE_test, CC_test, excel_path)
