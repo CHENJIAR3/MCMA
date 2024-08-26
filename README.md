@@ -10,12 +10,12 @@ First author: Jiarong Chen&nbsp;
 </h3>
 
 ### Updates
-- [x] Paper (Waiting for its publication, which included detailed information)
-- [x] The application algorithm
-- [x] The training algorithm
-- [x] The testing algorithm
-- [x] Pretrained weights 
-- [x] The samples for testing
+- [x] ~~Paper (Waiting for its publication, which included detailed information)~~
+- [x] ~~The application algorithm~~
+- [x] ~~The training algorithm~~
+- [x] ~~The testing algorithm~~
+- [x] ~~Pretrained weights~~
+- [x] ~~The samples for testing~~
 
 ### Contributions
 - [x] Reconstructing 12-Lead ECG from Arbitrary Single-Lead ECG
@@ -28,7 +28,7 @@ First author: Jiarong Chen&nbsp;
 #### ** You can follow this repo for the newest information. **
 
 It is the open-source code for MCMA, which could reconstruct 12-lead ECG with arbitrary single-lead ECG. 
-Before running, you should load your ECG signals, and the amplitude unit should be mv!!! If not, you should adjust it in advance.
+Before running, you should load your ECG signals, and the amplitude unit should be __mv__!!! If not, you should adjust it in advance.
 
 ### Citation
 If you find this project is useful, please cite **Multi-Channel Masked Autoencoder and Comprehensive Evaluations for Reconstructing 12-Lead ECG from Arbitrary Single-Lead ECG**
