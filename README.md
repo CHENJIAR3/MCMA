@@ -10,12 +10,12 @@ First author: Jiarong Chen&nbsp;
 </h3>
 
 ### Updates
-- [x] ~~Paper (Waiting for its publication, which included detailed information)~~
-- [x] ~~The application algorithm~~
-- [x] ~~The training algorithm~~
-- [x] ~~The testing algorithm~~
-- [x] ~~Pretrained weights~~
-- [x] ~~The samples for testing~~
+- [x] Paper (Waiting for its publication, which included detailed information)
+- [x] ~~The application algorithm
+- [x] ~~The training algorithm
+- [x] ~~The testing algorithm
+- [x] ~~Pretrained weights
+- [x] The samples for testing
 
 ### Contributions
 - [x] Reconstructing 12-Lead ECG from Arbitrary Single-Lead ECG
