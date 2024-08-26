@@ -20,13 +20,15 @@ First author: Jiarong Chen&nbsp;
 ### Contributions
 - [x] Reconstructing 12-Lead ECG from Arbitrary Single-Lead ECG
 - [x] Comprehensive Evaluations, including signal-level, feature-level, and diagnostic-level
+      
 ### Saved models
-- [x] The model in MCMA could be senn in the Generator file
+- [x] An example model in MCMA could be seen in the Generator file
 - [x] All the trained models: https://drive.google.com/drive/folders/1m57dz-FhcQCGNoZ2wxA_sUoHgrrGRHIn?usp=sharing
-#### ** You could follow this repo for the newest information. **
+      
+#### ** You can follow this repo for the newest information. **
 
 It is the open-source code for MCMA, which could reconstruct 12-lead ECG with arbitrary single-lead ECG. 
-Before running, you should load your ECG signals, and the amplitude unit should be ### mv.
+Before running, you should load your ECG signals, and the amplitude unit should be mv!!! If not, you should adjust it in advance.
 
 ### Citation
 If you find this project is useful, please cite **Multi-Channel Masked Autoencoder and Comprehensive Evaluations for Reconstructing 12-Lead ECG from Arbitrary Single-Lead ECG**
@@ -59,5 +61,10 @@ It includes demo.py, the trained model, and sample data.
 ```
 conda env create -f environment.yml
 ```
+
+### Future work
+1. I have tried different setting, but more efforts in model designing are necessary for this task.
+2. High quality ECG, although this study based on the public dataset, the signal quality influence its evaluation and reconstruction.
+
 ### Acknowledgements
 **Contacting me at chenjr356@gmail.com, chenjr56@mail2.sysu.edu.cn, jiarong.chen@sjtu.edu.cn**
