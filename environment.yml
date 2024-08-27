@@ -1,4 +1,4 @@
-name: py38tensorflow210
+name: MCMA_env
 channels:
   - https://mirrors.ustc.edu.cn/anaconda/pkgs/main
   - https://mirrors.ustc.edu.cn/anaconda/pkgs/free
