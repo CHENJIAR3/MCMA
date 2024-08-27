@@ -19,6 +19,7 @@ def paddingecg(ecg1,idx=0):
     return ecg_new
 
 # 读取数据，可能需要根据实际需求调整
+# 输出维度应该是（num，length）
 def Read_ECG(datapath,lead_idx=0):
     # datapath：数据存储路径，用mat格式
     # model：本研究实现的模型
