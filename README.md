@@ -61,8 +61,6 @@ It includes demo.py, the trained model, and sample data.
 ```
 conda env create -f environment.yml
 ```
-### Something Interesting
-MCMA can classify the lead index from 1 to 12, if you donot know it in advance. The index of maximum cc may be the ringht lead index. The classification accuracy of MCMA in lead classification task is 80.80%
 ### Future work
 1. I have tried different setting, but more efforts in model designing are necessary for this task.
 2. High quality ECG, although this study based on the public dataset, the signal quality influence its evaluation and reconstruction.
