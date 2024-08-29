@@ -31,7 +31,7 @@ It is the open-source code for MCMA, which could reconstruct 12-lead ECG with ar
 Before running, you should load your ECG signals, and the amplitude unit should be __mv__!!! If not, you should adjust it in advance.
 Before running, you should resample this signal as 500Hz.
 Before running, you can reshape it into (N,1024,1).
-Additionallu, the lead index should be provided. If not, you can try to find it by locating the maximum PCC. The lead index classifcaitionn accuracy in the internel testing dataset is 97.43%.
+Additionallu, the lead index should be provided. If not, you can try to find it by locating the maximum PCC. The lead index classifcaitionn accuracy in the internal testing dataset is 97.43%. 
 
 ### Citation
 If you find this project is useful, please cite **Multi-Channel Masked Autoencoder and Comprehensive Evaluations for Reconstructing 12-Lead ECG from Arbitrary Single-Lead ECG**
