@@ -69,4 +69,5 @@ conda env create -f environment.yml
 2. High quality ECG, although this study based on the public dataset, the signal quality influence its evaluation and reconstruction.
 
 ### Acknowledgements
+**If you have any question, please contact me, I will try my best to help you.**
 **Contacting me at chenjr356@gmail.com, chenjr56@mail2.sysu.edu.cn, jiarong.chen@sjtu.edu.cn**
