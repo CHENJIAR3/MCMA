@@ -1,7 +1,6 @@
-#这是一个测试模型生成性能的函数
+# The classification model is from 
 # Automatic Diagnosis of the 12-Lead {{ECG}} Using a Deep Neural Network
 # https://github.com/antonior92/automatic-ecg-diagnosis/tree/master?tab=readme-ov-file\
-# 这个代码测试模型的分类性能，测试集采用上述的逻辑
 import os
 
 import matplotlib.pyplot as plt
@@ -121,15 +120,16 @@ def plot_rec_pre(y_true,y_pred,label=['Original','CGAN','MAUNET','MEGAN','EKGAN'
 if __name__ == '__main__':
     threshold = np.array([0.124, 0.07, 0.05, 0.278, 0.390, 0.174])
     parser = argparse.ArgumentParser(description='Get performance on test set from hdf5')
-    path_to_hdf5='/data/0shared/chenjiarong/data/ecg_tracings.hdf5'
-    path_to_model='/data/0shared/chenjiarong/model/model.hdf5'
+    # input path_to_hdf5, path_to_model
+    # path_to_hdf5='path for ecg_tracings.hdf5'
+    # path_to_model='path for model.hdf5'
 
     dataset_name='tracings'
     score_fun = {'Precision': precision_score,
                  'Recall': recall_score, 'Specificity': specificity_score,
                  'F1 score': f1_score, 'acc':accuracy_score}
-
-    y_true = pd.read_csv('/data/0shared/chenjiarong/data/annotations/gold_standard.csv').values
+    # labelpath: the path for gold_standard.csv
+    y_true = pd.read_csv(labelpath).values
 
     # Import data
     # seq = ECGSequence(args.path_to_hdf5, args.dataset_name, batch_size=args.bs)
