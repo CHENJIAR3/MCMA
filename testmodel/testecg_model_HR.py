@@ -188,6 +188,8 @@ def write2excel_hr2(rhr,fhr,maehr,excel_path):
         df3.to_excel(writer, sheet_name='MAE_HR', index=True)
 
 if __name__=='__main__':
+
+    # Every sample in the open-source dataset, the signal length might be 5000, 7500, 10000, and so on.
     testds = read_tfrecords_Long(testpath).batch(args.bs).prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
     resultpath = '../results/ptbxl/'
     # loading the trained model in MCMA
