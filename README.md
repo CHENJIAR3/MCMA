@@ -74,7 +74,7 @@ All datasets used in this study are openly available. You can access them throug
 
 Of course, I will try to upload these datasets online.
 
-- You can download with **Baidu Netdisk**: https://pan.baidu.com/s/1yycZodJyFAG95D_O6_jA_Q?pwd=MCMA 
+- You can download these datasets with **Baidu Netdisk**: https://pan.baidu.com/s/1yycZodJyFAG95D_O6_jA_Q?pwd=MCMA 
 
 ### Environment
 ```
