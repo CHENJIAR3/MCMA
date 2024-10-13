@@ -81,6 +81,8 @@ Of course, I have uploaded these datasets online.
 ```
 conda env create -f environment.yml
 ```
+You may fail to create your environment due to some issues, and I suggest you to pip install some packages.
+
 ### Future work
 1. I have tried different setting, but more efforts in model designing are necessary for this task.
 2. High quality ECG, although this study based on the public dataset, the signal quality influence its evaluation and reconstruction.
