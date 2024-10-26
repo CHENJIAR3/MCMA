@@ -9,8 +9,8 @@ for i in range(len(gpus)):
     tf.config.experimental.set_memory_growth(gpus[i], True)
 strategy = tf.distribute.MirroredStrategy()
 
-from utils import args,read_tfrecords
-from utils_MCMA import Trainer
+# from utils import 
+from utils_MCMA import args,read_tfrecords,Trainer
 from testmodel.testecg_model import test_ae,write2excel
 if __name__ == "__main__":
     # trainpath\testpath\valpath is necessary 
