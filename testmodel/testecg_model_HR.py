@@ -5,7 +5,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 import tensorflow as tf
 # from ekgan import read_tfrecords,load_label_generator
 import numpy as np
-from utils import args,read_tfrecords_Long
+from training_code/utils_MCMA import args,read_tfrecords_Long
 # from models import AutoEncoder,unet3plus
 tf.config.run_functions_eagerly(True)
 
