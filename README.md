@@ -36,26 +36,14 @@ Additionallu, the lead index should be provided. If not, you can try to find it 
 ### Citation
 If you find this project is useful, please cite **Multi-Channel Masked Autoencoder and Comprehensive Evaluations for Reconstructing 12-Lead ECG from Arbitrary Single-Lead ECG**
 ```
-@inproceedings{
-chen2024multichannel,
-title={Multi-Channel Masked Autoencoder and Comprehensive Evaluations for Reconstructing 12-Lead {ECG} from Arbitrary Single-Lead {ECG}},
-author={Jiarong chen and Wanqing Wu and Shenda Hong},
-booktitle={Artificial Intelligence and Data Science for Healthcare: Bridging Data-Centric AI and People-Centric Healthcare},
-year={2024},
-url={https://openreview.net/forum?id=lIX6BKDPJW}
-}
-```
-or 
-```
-@misc{chen2024multichannelmaskedautoencodercomprehensive,
-      title={Multi-Channel Masked Autoencoder and Comprehensive Evaluations for Reconstructing 12-Lead ECG from Arbitrary Single-Lead ECG}, 
-      author={Jiarong Chen and Wanqing Wu and Tong Liu and Shenda Hong},
-      year={2024},
-      eprint={2407.11481},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2407.11481}, 
-}
+@article{Chen2024,
+    title={Multi-channel masked autoencoder and comprehensive evaluations for reconstructing 12-lead ECG from arbitrary single-lead ECG},
+    author={Chen, Jiarong and Wu, Wanqing and Liu, Tong and Hong, Shenda},
+    journal={npj Cardiovascular Health},
+    year={2024},
+    doi={10.1038/s44325-024-00036-4},
+    url={https://doi.org/10.1038/s44325-024-00036-4},}
+
 ```
 ### Files 
 It includes demo.py, the trained model, and sample data.
