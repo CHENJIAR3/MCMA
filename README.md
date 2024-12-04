@@ -42,6 +42,7 @@ If you find this project is useful, please cite **Multi-Channel Masked Autoencod
     journal={npj Cardiovascular Health},
     year={2024},
     doi={10.1038/s44325-024-00036-4},
+    issn={2948-2836},
     url={https://doi.org/10.1038/s44325-024-00036-4},}
 
 ```
