@@ -36,15 +36,18 @@ Additionallu, the lead index should be provided. If not, you can try to find it 
 ### Citation
 If you find this project is useful, please cite **Multi-Channel Masked Autoencoder and Comprehensive Evaluations for Reconstructing 12-Lead ECG from Arbitrary Single-Lead ECG**
 ```
-@article{Chen2024,
-    title={Multi-channel masked autoencoder and comprehensive evaluations for reconstructing 12-lead ECG from arbitrary single-lead ECG},
-    author={Chen, Jiarong and Wu, Wanqing and Liu, Tong and Hong, Shenda},
-    journal={npj Cardiovascular Health},
-    year={2024},
-    doi={10.1038/s44325-024-00036-4},
-    issn={2948-2836},
-    url={https://doi.org/10.1038/s44325-024-00036-4},}
 
+@article{MCMA,
+  title={Multi-channel masked autoencoder and comprehensive evaluations for reconstructing 12-lead ECG from arbitrary single-lead ECG},
+  author={Chen, Jiarong and Wu, Wanqing and Liu, Tong and Hong, Shenda},
+  journal={npj Cardiovascular Health},
+  volume={1},
+  number={1},
+  pages={1--13},
+  year={2024},
+  doi={10.1038/s44325-024-00036-4},
+  publisher={Nature Publishing Group}
+}
 ```
 ### Files 
 It includes demo.py, the trained model, and sample data.
