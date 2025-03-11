@@ -58,8 +58,8 @@ def test_ae(model,ds,output_num=1,numlead=12,padding='zeros'):
                ecg1 = paddingecg(ecg12, index)
 
 
-            if output_num==1:
-                gen_ecg12=model(ecg1)
+            # if output_num==1:
+            gen_ecg12=model(ecg1)
             mae1,mse1,cc1=compute_metric(gen_ecg12,ecg12)
             MAE_[i,:]+=mae1
             MSE_[i,:]+=mse1
