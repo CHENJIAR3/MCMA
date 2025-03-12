@@ -36,7 +36,6 @@ def compute_metric(gen_ecg12,ecg12):
     else:
         cc= tf.reduce_sum(cc_item, axis=0)
     return np.asarray(mae),np.asarray(mse),np.asarray(cc)
-@tf.function(experimental_relax_shapes=True)
 def test_ae(model,ds,output_num=1,numlead=12,padding='zeros'):
     # if numlead==12:
     #     numlead+=1
